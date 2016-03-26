@@ -3,6 +3,7 @@ UpgradeTesterProduct
 {
    Depends {name:"cpp"}
    Depends { name: "corelib"}
+   Depends { name: "utlib"}
    type : "application"
    consoleApplication: true
    destinationDirectory: "bin"

@@ -6,7 +6,7 @@ Product
    targetName : "ut"
    Depends { 
       name: "Qt"; 
-      submodules: ["core", "network","websockets"]
+      submodules: ["core", "network","websockets", "qml"]
    }
    Depends { name:"corelib"}
    Depends { name:"cpp"}
@@ -43,7 +43,18 @@ Product
       name: "global"
       prefix: name + "/"
       files: [
-           "const.h",
+         "const.h",
+      ]
+   }
+   
+   Group {
+      name: "upgrade"
+      prefix: name + "/"
+      files:[
+           "upgrade_env_script_object.cpp",
+           "upgrade_env_script_object.h",
+           "upgradeenv.cpp",
+           "upgradeenv.h",
        ]
    }
 }

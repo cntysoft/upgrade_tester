@@ -10,7 +10,14 @@ UpgradeTesterApplication
     ]
    name : "upgrade_tester"
    targetName : "upgrade_tester"
-   Depends { name: "Qt"; submodules: ["sql"] }
+   Depends { 
+      name: "Qt"; 
+      submodules: [
+         "sql",
+         "websockets",
+         "qml"
+      ]
+   }
    cpp.includePaths: base.concat([
                                     ".","../../libs"
                                  ])
@@ -31,6 +38,8 @@ UpgradeTesterApplication
            "command_repo.h",
            "global_command.cpp",
            "global_command.h",
+           "upgrade_script_runner_command.cpp",
+           "upgrade_script_runner_command.h",
        ]
    }
    Group {

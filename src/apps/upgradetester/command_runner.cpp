@@ -17,6 +17,7 @@ using sn::corelib::AbstractCommandRunner;
 
 using upgradetester::command::GlobalVersionCommand;
 using upgradetester::command::GlobalHelpCommand;
+using upgradetester::command::UpgradeScriptRunnerCommand;
 
 CommandRunner::CommandRunner(Application &app)
    : AbstractCommandRunner(app)
@@ -25,6 +26,7 @@ CommandRunner::CommandRunner(Application &app)
    addUsageText("usage: \n", TerminalColor::LightBlue);
    addUsageText("--version  print upgrade tester system version number\n");
    addUsageText("--help     print help document\n");
+   addUsageText("--script= [--upgradedir=] [--upgradedb=] test upgrade script\n\n");
    initCommandPool();
    initRouteItems();
 }
@@ -39,6 +41,10 @@ void CommandRunner::initCommandPool()
       GlobalHelpCommand *cmd = new GlobalHelpCommand(dynamic_cast<CommandRunner&>(runner), meta);
       return cmd;
    });
+   m_cmdRegisterPool.insert("Global_ScriptRunner", [](AbstractCommandRunner& runner, const CommandMeta& meta)->AbstractCommand*{
+      UpgradeScriptRunnerCommand *cmd = new UpgradeScriptRunnerCommand(dynamic_cast<CommandRunner&>(runner), meta);
+      return cmd;
+   });
 }
 
 void CommandRunner::initRouteItems()
@@ -50,6 +56,10 @@ void CommandRunner::initRouteItems()
    addCmdRoute("help", "--help", 1, {
                   {"category", "Global"},
                   {"name", "Help"}
+               });
+   addCmdRoute("scriptrunner", "--script= [--upgradedir=] [--upgradedb=]", 1, {
+                  {"category", "Global"},
+                  {"name", "ScriptRunner"}
                });
 }
 
