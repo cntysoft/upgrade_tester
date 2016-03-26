@@ -1,0 +1,6 @@
+#ifndef UT_LIB_GLOBAL_CONST_H
+#define UT_LIB_GLOBAL_CONST_H
+
+#define UT_CFG_GROUP_GLOBAL "Global"
+
+#endif // UT_LIB_GLOBAL_CONST_H

@@ -1,6 +1,7 @@
 import qbs 1.0
 Project{
    references: [
-      "corelib/corelib.qbs"
+      "corelib/corelib.qbs",
+      "utlib/utlib.qbs"
    ]
 }
